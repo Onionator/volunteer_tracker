@@ -1,0 +1,16 @@
+<h1><%= @project.title %> Project</h1>
+
+<form class="" action="/project/<%= @project.id %>/edit/save_title" method="post">
+  <label for="title">Change Project Title</label>
+  <input type="text" name="title" value="">
+  <button type="submit" name="button">Update Project</button>
+</form>
+
+<h2>Details</h2>
+
+<form class="" action="index.html" method="post">
+  <label for="">Change Project Details</label>
+  <textarea name="name" rows="8" cols="80"></textarea>
+</form>
+
+<a href="/project/<%= @project.id %>">Go Back</a>

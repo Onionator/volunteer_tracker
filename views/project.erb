@@ -1,1 +1,9 @@
-<h1>Welcome to <%= @project %></h1>
+<h1><%= @project.title %> Project</h1>
+
+<h2>Details</h2>
+
+<p name="details"></p>
+
+<a href="/project/<%= @project.id %>/edit">Edit Project</a>
+<br>
+<a href="/">Go Home</a>

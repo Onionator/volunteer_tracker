@@ -22,3 +22,14 @@ get ('/project/:id') do
   @project = Project.find(params[:id].to_i)
   erb(:project)
 end
+
+get ('/project/:id/edit') do
+  @project = Project.find(params[:id].to_i)
+  erb(:project_edit)
+end
+
+post ('/project/:id/edit/save_title') do
+  @project = Project.find(params[:id].to_i)
+  @project.update(params[:title])
+  erb(:project)
+end
