@@ -26,6 +26,13 @@ class Project
     DB.exec("UPDATE projects SET title = '#{title}' WHERE id = #{@id};")
   end
   def delete
-    DB.exec("DELETE FROM projects WHERE id = #{@id};;")
+    DB.exec("DELETE FROM projects WHERE id = #{@id};")
+  end
+  def self.find(id)
+    project = DB.exec("SELECT * FROM projects WHERE id = #{id};")
+    Project.new({:title => project.first.fetch("title"), :id => id})
+  end
+  def ==(compare)
+    self.title == compare.title
   end
 end
