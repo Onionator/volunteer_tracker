@@ -1,17 +1,52 @@
 <h1>This is a homepage. It exists.</h1>
 
+<br>
+<h2>Projects</h2>
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><a href="/project/<%= project.id %>">Project: <%= project.title %>_____ID: <%= project.id %></a></li>
+    <% end %>
+  </ul>
+  
+<br>
 <form class="" action="/new_project" method="post">
+  <h3>Add a new project</h3>
   <label for="title">What is the title of your project?</label>
   <input type="text" name="title" value=""><br>
   <button type="submit" name="button">Create Project</button>
 </form>
 
-<% if @projects.any? %>
+<br>
+<h2>Volunteers</h2>
+<% if @volunteers.any? %>
   <ul>
-    <% @projects.each do |project| %>
-      <li><a href="/project/<%= project.id %>"><%= project.title %></a></li>
+    <% @volunteers.each do |volunteer| %>
+      <li><a href="/volunteer/<%= volunteer.id %>"><%= volunteer.name %></a></li>
     <% end %>
   </ul>
 <% else %>
+  <p>All hope for humanity is lost! You don't have any volunteers right now.</p>
+<% end %>
+
+<br>
+<form class="" action="/new_volunteer" method="post">
+  <h3>Enlist a new soul</h3>
+  <label for="name">Name</label>
+  <input type="text" name="name" value=""><br>
+  <label for="project_id">Project ID</label>
+  <input type="text" name="project_id" value=""><br>
+  <button type="submit" name="button">Enlist Soul</button>
+</form>
+
+<% else %>
   <p>You don't have any projects right now.</p>
+
+  <form class="" action="/new_project" method="post">
+    <h3>Add a new project</h3>
+    <label for="title">What is the title of your project?</label>
+    <input type="text" name="title" value=""><br>
+    <button type="submit" name="button">Create Project</button>
+  </form>
+  <br>
 <% end %>

@@ -12,11 +12,9 @@ class Volunteer
     volunteer = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', #{@project_id}) RETURNING id;")
     @id = volunteer.first.fetch("id").to_i
   end
-  def update(name, project_id)
-    @name = name
-    @project_id = project_id
-    DB.exec("UPDATE volunteers SET name = '#{name}' WHERE id = #{@id};")
-    DB.exec("UPDATE volunteers SET project_id = '#{project_id}' WHERE porject_id = #{@project_id};")
+  def update(name)
+    @name = name || @name
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end
   def delete
     DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
