@@ -57,3 +57,8 @@ post ('/volunteer/:id/edit') do
   @volunteer.update(params[:name])
   erb(:volunteer)
 end
+
+post  ('/volunteer/:id/delete') do
+  Volunteer.find(params[:id].to_i).delete
+  redirect to('/')
+end
