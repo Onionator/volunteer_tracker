@@ -1,0 +1,17 @@
+<h1>This is a homepage. It exists.</h1>
+
+<form class="" action="/new_project" method="post">
+  <label for="title">What is the title of your project?</label>
+  <input type="text" name="title" value=""><br>
+  <button type="submit" name="button">Create Project</button>
+</form>
+
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><a href="/project/:<% project.id %>"><%= project.title %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You don't have any projects right now.</p>
+<% end %>
