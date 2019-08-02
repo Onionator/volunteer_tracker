@@ -12,7 +12,6 @@ describe Volunteer do
     it 'returns the project_id of the volunteer' do
       test_volunteer = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
       test_volunteer.save
-      p test_volunteer.project_id
       expect(test_volunteer.project_id).to eq 1
     end
   end

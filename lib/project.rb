@@ -16,7 +16,7 @@ class Project
     returned_projects = DB.exec("SELECT * FROM projects;")
     returned_projects.each do |project|
       title = project.fetch("title")
-      id = project.fetch("id")
+      id = project.fetch("id").to_i
       projects.push(Project.new({:title => title, :id => id}))
     end
     projects
@@ -34,5 +34,15 @@ class Project
   end
   def ==(compare)
     self.title == compare.title
+  end
+  def volunteers
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id};")
+    list_of_volunteers = []
+    returned_volunteers.each do |volunteer|
+      name = volunteer.fetch("name")
+      id = volunteer.fetch("id").to_i
+      list_of_volunteers.push(Volunteer.new({:name => name, :id => id, :project_id => @id}))
+    end
+    list_of_volunteers
   end
 end
