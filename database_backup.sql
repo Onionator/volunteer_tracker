@@ -26,7 +26,7 @@ SET default_with_oids = false;
 
 CREATE TABLE public.projects (
     id integer NOT NULL,
-    name character varying
+    title character varying
 );
 
 
@@ -107,7 +107,7 @@ ALTER TABLE ONLY public.volunteers ALTER COLUMN id SET DEFAULT nextval('public.v
 -- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: Sam
 --
 
-COPY public.projects (id, name) FROM stdin;
+COPY public.projects (id, title) FROM stdin;
 \.
 
 
@@ -152,4 +152,3 @@ ALTER TABLE ONLY public.volunteers
 --
 -- PostgreSQL database dump complete
 --
-

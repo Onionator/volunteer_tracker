@@ -33,3 +33,8 @@ post ('/project/:id/edit/save_title') do
   @project.update(params[:title])
   erb(:project)
 end
+
+post ('/project/:id/edit/delete') do
+  Project.find(params[:id].to_i).delete
+  redirect to('/')
+end
