@@ -20,6 +20,7 @@ end
 
 get ('/project/:id') do
   @project = Project.find(params[:id].to_i)
+  @volunteers = @project.volunteers
   erb(:project)
 end
 
@@ -37,4 +38,9 @@ end
 post ('/project/:id/edit/delete') do
   Project.find(params[:id].to_i).delete
   redirect to('/')
+end
+
+get ('/volunteer/:id') do
+  @volunteer = Volunteer.find(params[:id].to_i)
+  erb(:volunteer)
 end

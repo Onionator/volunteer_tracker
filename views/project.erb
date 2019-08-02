@@ -2,7 +2,17 @@
 
 <h2>Details</h2>
 
-<p name="details"></p>
+<h3>The brave souls who are volunteering</h3>
+<% if @volunteers.any? %>
+  <ul>
+    <% @volunteers.each do |volunteer| %>
+      <li><a href="/volunteer/<% volunteer.id %>"><%= volunteer.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No one has volunteered for this project yet. Try offering free pizza.</p>
+<% end %>
+
 
 <a href="/project/<%= @project.id %>/edit">Edit Project</a>
 <br>
