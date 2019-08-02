@@ -8,6 +8,9 @@ class Volunteer
     @id = attritbutes.fetch(:id)
     @project_id = attritbutes.fetch(:project_id)
   end
+  def save
+    DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', #{@project_id});")
+  end
   def self.all
     volunteers = []
     returned_volunteers = DB.exec("SELECT * FROM volunteers;")
@@ -20,10 +23,10 @@ class Volunteer
     volunteers
   end
   def update(name, project_id)
-    @name = name ? name : @name
-    @project_id = project_id ? project_id : @project_id
-    DB.exec("UPDATE volunteers SET name = '#{name}' WHERE id = #{@id}")
-    DB.exec("UPDATE volunteers SET project_id = '#{project_id}' WHERE porject_id = #{@project_id}")
+    @name = name.length > 0 ? name : @name
+    @project_id = project_id.length > 0 ? project_id : @project_id
+    DB.exec("UPDATE volunteers SET name = '#{name}' WHERE id = #{@id};")
+    DB.exec("UPDATE volunteers SET project_id = '#{project_id}' WHERE porject_id = #{@project_id};")
   end
   def delete
     DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
